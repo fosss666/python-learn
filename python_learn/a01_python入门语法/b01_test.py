@@ -15,6 +15,7 @@ print(type(t2))
 print(type(t3))
 """
 # 数据类型转换
+"""
 t1 = float(11)
 print(t1)
 print(type(t1))
@@ -24,3 +25,10 @@ print(type(t2))
 
 t3 = int("11")
 print(type(t3))
+"""
+
+# 运算符
+print("4/2=", 4 / 2)
+print("2/3=", 2 / 3)
+print("9整除2=", 9 // 2)
+print("4指数2=", 4 ** 2)
