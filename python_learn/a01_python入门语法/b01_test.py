@@ -54,3 +54,7 @@ print(f"我叫{name}，今年{age}岁了，考了{score}分")
 print("1*1=%s" % (1 * 1))
 print(f"1*2={1 * 2}")
 print("字符串的数据类型：%s" % type(""))
+
+# 数据输入
+name = input("请告诉我你的名字\n")
+print("你是：%s" % name)
