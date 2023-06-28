@@ -23,11 +23,18 @@ import random
 #     count += 1
 
 # 案例3-九九乘法表
-i = 1
-while i <= 9:
-    j = 1
-    while j <= i:
-        print(f"{j}*{i}={i * j}\t", end='')
-        j += 1
-    i += 1
-    print()
+# i = 1
+# while i <= 9:
+#     j = 1
+#     while j <= i:
+#         print(f"{j}*{i}={i * j}\t", end='') #end=''的作用是不换行
+#         j += 1
+#     i += 1
+#     print()
+# 案例4-数数几个a
+name = "itheima is a brand of itcast"
+count = 0
+for c in name:
+    if c == "a":
+        count += 1
+print(count)
