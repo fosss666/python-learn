@@ -39,8 +39,14 @@ import random
 #         count += 1
 # print(count)
 # 案例5-有几个偶数
-count = 0
-for num in range(1, 100):
-    if num % 2 == 0:
-        count += 1
-print("1到100（不含100本身）范围内，有%d个偶数" % count)
+# count = 0
+# for num in range(1, 100):
+#     if num % 2 == 0:
+#         count += 1
+# print("1到100（不含100本身）范围内，有%d个偶数" % count)
+
+# 案例6-for循环打印九九乘法表
+for i in range(1, 10):
+    for j in range(1, i + 1):
+        print(f"{j}*{i}={j * i}\t", end='')
+    print()
