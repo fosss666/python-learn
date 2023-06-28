@@ -1,3 +1,5 @@
+import random
+
 # 布尔类型
 num_1 = 10
 num_2 = 20
@@ -36,11 +38,35 @@ num = 1
 #             print("Sorry，全部猜错了，我想的是：%d" % num)
 
 
-if int(input("请输入第一次猜想的数字：")) == num:
-    print("猜对喽")
-elif int(input("不对，再猜一次：")) == num:
-    print("猜对喽")
-elif int(input("不对，再猜最后一次：")) == num:
-    print("终于猜对喽")
+# if int(input("请输入第一次猜想的数字：")) == num:
+#     print("猜对喽")
+# elif int(input("不对，再猜一次：")) == num:
+#     print("猜对喽")
+# elif int(input("不对，再猜最后一次：")) == num:
+#     print("终于猜对喽")
+# else:
+#     print("Sorry，全部猜错了，我想的是：%d" % num)
+
+# 综合案例-猜数字
+num = random.randint(1, 10)
+i = int(input("第一次猜："))
+if i == num:
+    print("猜对啦")
 else:
-    print("Sorry，全部猜错了，我想的是：%d" % num)
+    if i > num:
+        print("大了")
+    else:
+        print("小了")
+    i = int(input("第二次猜："))
+    if i == num:
+        print("猜对啦")
+    else:
+        if i > num:
+            print("大了")
+        else:
+            print("小了")
+        i = int(input("第三次猜："))
+        if i == num:
+            print("猜对啦")
+        else:
+            print("Sorry，次数用完了")
