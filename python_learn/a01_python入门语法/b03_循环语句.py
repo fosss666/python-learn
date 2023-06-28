@@ -32,9 +32,15 @@ import random
 #     i += 1
 #     print()
 # 案例4-数数几个a
-name = "itheima is a brand of itcast"
+# name = "itheima is a brand of itcast"
+# count = 0
+# for c in name:
+#     if c == "a":
+#         count += 1
+# print(count)
+# 案例5-有几个偶数
 count = 0
-for c in name:
-    if c == "a":
+for num in range(1, 100):
+    if num % 2 == 0:
         count += 1
-print(count)
+print("1到100（不含100本身）范围内，有%d个偶数" % count)
