@@ -24,9 +24,20 @@
 # print(l)
 
 # 元组 不可被修改
-my_tuple = ('周杰伦', 11, ['football', 'music'])
-print(my_tuple.index(11))
-print(my_tuple[0])
-my_tuple[2].pop(0)
-my_tuple[2].append('coding')
-print(my_tuple)
+# my_tuple = ('周杰伦', 11, ['football', 'music'])
+# print(my_tuple.index(11))
+# print(my_tuple[0])
+# my_tuple[2].pop(0)
+# my_tuple[2].append('coding')
+# print(my_tuple)
+
+# 字符串 不可被修改，替代操作会返回一个新字符串
+# my_str = "12fjalsjfaj21"
+# new_my_str = my_str.strip("12")
+# print(new_my_str)
+# 案例-分割字符串
+my_str = "itheima itcast boxuegu"
+print(my_str.count("it"))
+my_str = my_str.replace(" ", "|")
+print(my_str)
+print(my_str.split("|"))
