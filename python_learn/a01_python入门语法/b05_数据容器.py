@@ -43,7 +43,14 @@
 # print(my_str.split("|"))
 
 # 序列切片
-my_str = "万过薪月，员序程马黑来，nohtyP学"
-print(my_str[9:4:-1])
-my_str = my_str.split("，")[1]
-print(my_str.replace("来", "")[::-1])
+# my_str = "万过薪月，员序程马黑来，nohtyP学"
+# print(my_str[9:4:-1])
+# my_str = my_str.split("，")[1]
+# print(my_str.replace("来", "")[::-1])
+
+# 集合 相当于java中的set
+my_list = ['黑马程序员', '传智播客', '黑马程序员', '传智播客', "itheima", 'itcast', "itheima", 'itcast', 'best']
+set1 = set()
+for element in my_list:
+    set1.add(element)
+print(set1)
