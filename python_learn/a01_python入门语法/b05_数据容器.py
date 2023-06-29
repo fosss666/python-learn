@@ -36,8 +36,14 @@
 # new_my_str = my_str.strip("12")
 # print(new_my_str)
 # 案例-分割字符串
-my_str = "itheima itcast boxuegu"
-print(my_str.count("it"))
-my_str = my_str.replace(" ", "|")
-print(my_str)
-print(my_str.split("|"))
+# my_str = "itheima itcast boxuegu"
+# print(my_str.count("it"))
+# my_str = my_str.replace(" ", "|")
+# print(my_str)
+# print(my_str.split("|"))
+
+# 序列切片
+my_str = "万过薪月，员序程马黑来，nohtyP学"
+print(my_str[9:4:-1])
+my_str = my_str.split("，")[1]
+print(my_str.replace("来", "")[::-1])
