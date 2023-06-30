@@ -45,3 +45,5 @@ def f2(n1, n2):
 
 
 f1(f2)
+# lambda
+f1(lambda x, y: x + y)
