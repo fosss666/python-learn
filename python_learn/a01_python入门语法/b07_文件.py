@@ -33,7 +33,17 @@
 # f.close()
 
 # 追加写
-f = open("E:/fo的python学习\python_learn/a01_python入门语法/write.txt", "a", encoding="utf-8")
-f.write("河马")
-f.write("\n河马")
-f.close()
+# f = open("E:/fo的python学习\python_learn/a01_python入门语法/write.txt", "a", encoding="utf-8")
+# f.write("河马")
+# f.write("\n河马")
+# f.close()
+
+# 综合案例-文件复制
+f = open("E:/fo的python学习\python_learn/a01_python入门语法/bill.txt", "r", encoding="utf-8")
+to = open("E:/fo的python学习\python_learn/a01_python入门语法/bill_copy.txt", "a", encoding="utf-8")
+for line in f:
+    # print(line)
+    arr = line.split(",")
+    # print(arr)
+    if '测试' != arr[-1].replace("\n", ""):
+        to.write(line)
