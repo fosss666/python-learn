@@ -47,10 +47,48 @@
 # print(my_str[9:4:-1])
 # my_str = my_str.split("，")[1]
 # print(my_str.replace("来", "")[::-1])
+# my_tuple = (1, 2, 3)
+# print(my_tuple[1: 2])
 
 # 集合 相当于java中的set
-my_list = ['黑马程序员', '传智播客', '黑马程序员', '传智播客', "itheima", 'itcast', "itheima", 'itcast', 'best']
-set1 = set()
-for element in my_list:
-    set1.add(element)
-print(set1)
+# my_list = ['黑马程序员', '传智播客', '黑马程序员', '传智播客', "itheima", 'itcast', "itheima", 'itcast', 'best']
+# set1 = set()   不能用{}（这个写法被字典占用了）
+# for element in my_list:
+#     set1.add(element)
+# print(set1)
+
+# 字典
+my_dict = {
+    "王力宏": {
+        "部门": "科技部",
+        "工资": 3000,
+        "级别": 1
+    },
+    "周杰伦": {
+        "部门": "市场部",
+        "工资": 5000,
+        "级别": 2
+    },
+    "林俊杰": {
+        "部门": "市场部",
+        "工资": 7000,
+        "级别": 3
+    },
+    "张学友": {
+        "部门": "科技部",
+        "工资": 4000,
+        "级别": 1
+    },
+    "刘德华": {
+        "部门": "市场部",
+        "工资": 6000,
+        "级别": 2
+    }
+}
+print(f"全体员工信息如下：\n{my_dict}")
+for ele in my_dict:
+    if my_dict[ele]["级别"] == 1:
+        my_dict[ele]["级别"] += 1
+        my_dict[ele]["工资"] += 1000
+
+print(f"全体员工级别为1的员工完成升职加薪操作，操作后：\n{my_dict}")
