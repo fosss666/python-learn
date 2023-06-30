@@ -31,3 +31,17 @@ def f1(**args):
 
 
 f1(name="张三", age=11)
+
+
+# 函数作为参数传递
+def f1(f2):
+    res = f2(1, 2)
+    print(res)
+    print(type(f2))
+
+
+def f2(n1, n2):
+    return n1 + n2
+
+
+f1(f2)
