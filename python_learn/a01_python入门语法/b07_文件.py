@@ -27,7 +27,13 @@
 #     print(count)
 
 # 写操作,没有该文件则自动创建，每次写的内容会将原文件中的内容替换掉
-f = open("E:/fo的python学习\python_learn/a01_python入门语法/write.txt", "w", encoding="utf-8")
-f.write("Hello World!!")
-# f.flush()
+# f = open("E:/fo的python学习\python_learn/a01_python入门语法/write.txt", "w", encoding="utf-8")
+# f.write("Hello World!!")
+# # f.flush()
+# f.close()
+
+# 追加写
+f = open("E:/fo的python学习\python_learn/a01_python入门语法/write.txt", "a", encoding="utf-8")
+f.write("河马")
+f.write("\n河马")
 f.close()
