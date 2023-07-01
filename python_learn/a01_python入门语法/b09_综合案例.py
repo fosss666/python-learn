@@ -23,6 +23,7 @@
 # print(d)
 import json
 
+# ================================折线图===========================================
 # from pyecharts.charts import Line
 # from pyecharts.options import TitleOpts, LegendOpts, ToolboxOpts, VisualMapOpts
 #
@@ -40,12 +41,19 @@ import json
 #
 # line.render()
 
+"""
 us_f = open("E:/fo的python学习/python_learn/a01_python入门语法/美国.txt", "r", encoding="UTF-8")
 jp_f = open("E:/fo的python学习/python_learn/a01_python入门语法/日本.txt", "r", encoding="UTF-8")
 in_f = open("E:/fo的python学习/python_learn/a01_python入门语法/印度.txt", "r", encoding="UTF-8")
 us_data = us_f.read()
 jp_data = jp_f.read()
 in_data = in_f.read()
+
+# 关闭文件
+us_f.close()
+jp_f.close()
+in_f.close()
+
 # 取出首尾不是json的数据
 us_data = us_data.replace("jsonp_1629344292311_69436(", "")
 us_data = us_data[:-2]
@@ -90,3 +98,55 @@ line.set_global_opts(
 )
 
 line.render()
+"""
+
+# ================================地图===========================================
+"""
+# 读文件
+f = open("E:/fo的python学习/python_learn/a01_python入门语法/疫情.txt", "r", encoding="UTF-8")
+province_data_list = f.read()
+# 关闭文件
+f.close()
+
+# 对数据进行处理
+# 转为字典
+province_dict_list = json.loads(province_data_list)
+# 将省名和确诊数组装成字典封装在列表中
+province_list = []
+province_dict_list = province_dict_list["areaTree"][0]["children"]
+
+for province_dict in province_dict_list:
+    province = province_dict["name"]  # 省名
+    if len(province_dict["name"]) <= 3:
+        province = province + "省"
+    confirm = province_dict["total"]["confirm"]  # 确诊人数
+    m = (province, confirm)  # 封装为字典
+    province_list.append(m)
+# print(province_list)
+
+# 生成地图
+from pyecharts.charts import Map
+from pyecharts.options import *
+
+m = Map()
+m.add("全国确诊人数图", province_list, maptype="china")
+
+# 全局配置
+m.set_global_opts(
+    title_opts=TitleOpts(title="全国确诊人数图"),
+    visualmap_opts=VisualMapOpts(
+        is_show=True,
+        is_piecewise=True,
+        pieces=[
+            {"min": 1, "max": 99, "lable": "1~99", "color": "#CCFFFF"},
+            {"min": 100, "max": 999, "lable": "100~999", "color": "#FFFF99"},
+            {"min": 1000, "max": 4999, "lable": "1000~4999", "color": "#FF9966"},
+            {"min": 5000, "max": 9999, "lable": "5000~9999", "color": "#FF6666"},
+            {"min": 10000, "max": 99999, "lable": "10000~99999", "color": "#CC3333"},
+            {"min": 100000, "lable": "00000+", "color": "#990033"},
+        ]
+    )
+)
+
+m.render("全国确诊人数图.html")
+"""
