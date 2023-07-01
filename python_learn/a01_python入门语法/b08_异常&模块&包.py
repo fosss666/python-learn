@@ -72,4 +72,12 @@
 # my_module.test2()
 
 # 自动执行导入模块的方法
-import my_module
+# import my_module
+
+# 包
+from my_utils import str_util, file_util
+
+print(str_util.str_reverse("12345"))
+print(str_util.substr("12345", 0, 3))
+file_util.print_file_info("E:/fo的python学习/python_learn/a01_python入门语法/word.txt")
+file_util.append_to_file("E:/fo的python学习/python_learn/a01_python入门语法/word.txt", "\n饿了来了")
