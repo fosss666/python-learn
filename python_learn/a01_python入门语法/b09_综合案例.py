@@ -143,10 +143,56 @@ m.set_global_opts(
             {"min": 1000, "max": 4999, "lable": "1000~4999", "color": "#FF9966"},
             {"min": 5000, "max": 9999, "lable": "5000~9999", "color": "#FF6666"},
             {"min": 10000, "max": 99999, "lable": "10000~99999", "color": "#CC3333"},
-            {"min": 100000, "lable": "00000+", "color": "#990033"},
+            {"min": 100000, "lable": "100000+", "color": "#990033"},
         ]
     )
 )
 
 m.render("全国确诊人数图.html")
 """
+
+# ======================江苏省==========================
+"""
+# 读文件
+f = open("E:/fo的python学习/python_learn/a01_python入门语法/疫情.txt", "r", encoding="UTF-8")
+province_data_list = f.read()
+# 关闭文件
+f.close()
+
+# 对数据进行处理
+# 转为字典
+province_dict_list = json.loads(province_data_list)
+# 将市名和确诊数组装成字典封装在列表中
+jiangsu_list = []
+jiangsu_province_dict_list = province_dict_list["areaTree"][0]["children"][1]["children"]
+for shi in jiangsu_province_dict_list:
+    jiangsu_list.append((shi["name"] + "市", shi["total"]["confirm"]))
+# print(jiangsu_list)
+
+# 生成地图
+from pyecharts.charts import Map
+from pyecharts.options import *
+
+m = Map()
+m.add("江苏省各市确诊情况", jiangsu_list, maptype="江苏")
+
+# 全局配置
+m.set_global_opts(
+    title_opts=TitleOpts(title="江苏省各市确诊情况", pos_left="center", pos_bottom="1%"),
+    visualmap_opts=VisualMapOpts(
+        is_show=True,
+        is_piecewise=True,
+        pieces=[
+            {"min": 1, "max": 9, "lable": "1~9", "color": "#CCFFFF"},
+            {"min": 10, "max": 99, "lable": "10~99", "color": "#FFFF99"},
+            {"min": 100, "max": 499, "lable": "100~499", "color": "#FF9966"},
+            {"min": 500, "max": 999, "lable": "500~999", "color": "#FF6666"},
+            {"min": 1000, "max": 9999, "lable": "1000~9999", "color": "#CC3333"},
+            {"min": 10000, "lable": "10000+", "color": "#990033"},
+        ]
+    )
+)
+
+m.render("江苏省各市确诊情况.html")
+"""
+
