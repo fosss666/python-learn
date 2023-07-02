@@ -196,3 +196,17 @@ m.set_global_opts(
 m.render("江苏省各市确诊情况.html")
 """
 
+# =========================柱状图==========================
+from pyecharts.charts import Bar
+from pyecharts.options import LabelOpts
+# 基础柱状图
+"""
+bar = Bar()
+bar.add_xaxis(["中国", "美国", "日本"])
+bar.add_yaxis("GDP", [30, 20, 10], label_opts=LabelOpts(position="right"))
+
+# 翻转x轴，y轴
+bar.reversal_axis()
+
+bar.render("基础柱状图.html")
+"""
