@@ -198,7 +198,7 @@ m.render("江苏省各市确诊情况.html")
 
 # =========================柱状图==========================
 from pyecharts.charts import Bar, Timeline
-from pyecharts.options import LabelOpts
+from pyecharts.options import LabelOpts, TitleOpts
 from pyecharts.globals import ThemeType
 
 # 基础柱状图
@@ -257,3 +257,65 @@ my_list.sort(key=lambda element: element[1], reverse=True)
 
 print(my_list)
 """
+
+# ===============GDP动态柱状图=================
+# 读取文件
+f = open("E:/fo的python学习/python_learn/a01_python入门语法/1960-2019全球GDP数据.csv", "r", encoding="GB2312")
+data = f.readlines()
+# 处理内容
+# 去掉第一行
+data.pop(0)
+# 封装成所需数据
+data_dict = {}
+for line in data:
+    # 获取年，国家名，GDP
+    year = line.split(",")[0]
+    country = line.split(",")[1]
+    gdp = float(line.split(",")[2].strip())  # 去掉换行符,将科学计数法转成数字
+    # 按照年进行分类，放到字典不同元素中
+    try:
+        data_dict[year].append([country, gdp])
+    except KeyError:
+        data_dict[year] = []
+        data_dict[year].append([country, gdp])
+# 按照时间顺序取前八的国家，字典是无序的，所以要以时间取值
+# 取出所有时间并排序
+keys = data_dict.keys()
+keys = sorted(keys)
+timeline = Timeline({"theme": ThemeType.LIGHT})
+for key in keys:
+    value = data_dict[key]
+    value.sort(key=lambda e: e[1], reverse=True)
+    # 取前八
+    value = value[0:8]
+    # 封装x,y轴
+    x_data = []
+    y_data = []
+    for v in value:
+        x_data.append(v[0])
+        y_data.append(v[1])
+    bar = Bar()
+    # 将数据翻转
+    x_data.reverse()
+    y_data.reverse()
+    bar.add_xaxis(x_data)
+    bar.add_yaxis("GDP(亿)", y_data, label_opts=LabelOpts(position="right"))
+    # 添加表名
+    bar.set_global_opts(
+        title_opts=TitleOpts(title=f"{key}年全球GDP前八国家")
+    )
+    # 翻转x,y轴
+    bar.reversal_axis()
+    # 添加时间线
+    timeline.add(bar, key)
+
+# 全局配置
+timeline.add_schema(
+    is_auto_play=True,  # 是否自动播放
+    is_loop_play=False,  # 是否循环播放
+    play_interval=1000,  # 跳转间隔时间1s
+    is_timeline_show=True  # 是否显示时间线
+)
+
+# 绘制图像
+timeline.render("GDP动态柱状图.html")
