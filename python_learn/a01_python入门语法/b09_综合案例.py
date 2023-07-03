@@ -238,3 +238,22 @@ timeline.add_schema(
 
 timeline.render("基础时间线柱状图.html")
 """
+
+# ===================动态柱状图======================
+"""
+# 对列表进行自定义排序
+my_list = [['张三', 18], ['里斯', 55], ['王五', 3]]
+
+
+# 1.带名函数
+def choose_sort(element):
+    return element[1]
+
+
+# my_list.sort(key=choose_sort, reverse=True)
+
+# 2.lambda匿名函数
+my_list.sort(key=lambda element: element[1], reverse=True)
+
+print(my_list)
+"""
