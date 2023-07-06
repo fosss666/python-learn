@@ -6,7 +6,7 @@
 """
 import json
 
-from data_define import Record
+from a02_面向对象.b13_数据分析案例.data_define import Record
 
 
 class FileReader:

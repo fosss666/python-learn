@@ -13,7 +13,7 @@ conn = connections.Connection(
     password='123456'
 )
 # print(conn.get_server_info(), conn.get_host_info(), conn.get_proto_info())
-
+# conn.commit()
 # 选择数据库
 conn.select_db("dg_test")
 # 获取游标对象
