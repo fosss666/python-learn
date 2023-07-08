@@ -10,6 +10,8 @@ import os
 os.environ['PYSPARK_PYTHON'] = 'F:/python/python.exe'
 
 conf = SparkConf().setMaster("local[*]").setAppName("test_spark")
+# 输出的文本放到一个文件中
+conf.set("spark.default.parallelism", "1")
 sc = SparkContext(conf=conf)
 
 file_rdd = sc.textFile("E:/fo的python学习/python_learn/a04_pyspark/search_log.txt")
@@ -43,4 +45,6 @@ res3 = file_rdd.map(lambda x: x.split('\t')). \
     sortBy(lambda x: x[1], ascending=False, numPartitions=1). \
     take(1)
 print(res3)
+
 # 将数据转换为JSON格式，写出为文件
+file_rdd.saveAsTextFile("./output_json")
