@@ -26,3 +26,5 @@ print(rdd.take(3))
 #
 # # 4.count算子输出元素数量
 print(rdd.count())
+
+sc.stop()

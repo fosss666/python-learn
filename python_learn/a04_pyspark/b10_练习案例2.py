@@ -37,3 +37,5 @@ print("需求2：", res2.collect())
 # 过滤处北京市的商品
 res3 = dict_rdd.filter(lambda x: x['areaName'] == '北京').map(lambda x: x['category']).distinct()
 print("需求3：", res3.collect())
+
+sc.stop()
