@@ -16,7 +16,7 @@ conn, address = socket_service.accept()
 print(f"接收到连接：{address}")
 # 接收消息
 while True:
-    data = conn.recv(1024).decode('UTF-8')  # 1024为缓存大小
+    data = conn.recv(1024).decode('UTF-8')  # 1024为缓冲区大小
     print(f"接收到客户端消息：{data}")
     # 回复消息
     msg = input("请输入回复信息：")
